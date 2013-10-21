@@ -1,35 +1,46 @@
 {
-    "arm":
+    "test":
     [
         {
-            "name": "default",
-            "display": "ARM RealView 4.0",
+            "name": "path",
+            "display": "Base PATH tests",
             "path":
             [
-                "C:\\Tools\\ARM\\bin\\win_32-pentium",
-                "C:\\Tools\\ARM\\RVI\\GDB\\3.3\\8",
-                "C:\\Tools\\ARM\\RVI\\Tools\\3.3\\106\\programs\\win_32-pentium",
-                "C:\\Tools\\ARM\\RVCT\\Programs\\4.0\\400\\win_32-pentium",
-                "C:\\Tools\\ARM\\Utilities\\FLEXlm\\10.8.5.0\\1\\win_32-pentium",
-                "C:\\Tools\\ARM\\RVD\\Core\\4.0\\1106\\win_32-pentium\\bin"
-            ],
+                ".",
+                ".."
+            ]
+        },
+        {
+            "name": "set-test",
+            "display": "Variable creation",
             "set":
             {
-                "test": 4
-            },
-            "delete":
-            [
-                "variable1", "variable2"
-            ],
+                "FOO": "Hello",
+                "BAR": "World!"
+            }
+        },
+        {
+            "name": "modify-test",
+            "display": "Variable modification",
             "append":
             {
-                "lol": "rofl",
-                "lmao": "pmsl"
+                "FOO": ", World!",
+                "BAZ": "appended"
             },
             "prepend":
             {
-                "tro": "lol"
+                "BAR": "Hello, ",
+                "FOT": "prepended"
             }
+        },
+        {
+            "name": "delete-test",
+            "display": "Variable deletion",
+            "delete":
+            [
+                "BAZ",
+                "FOT"
+            ]
         }
     ],
     "msvc10":
@@ -49,32 +60,6 @@
                 "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\vcvarsall.bat",
                 "amd64"
             ]
-        }
-    ],
-    "test":
-    [
-        {
-            "display": "Testing Environment",
-            "path":
-            [
-                "."
-            ],
-            "set":
-            {
-                "fot": "this has been created"
-            },
-            "delete":
-            [
-                "baz"
-            ],
-            "append":
-            {
-                "foo": "World!"
-            },
-            "prepend":
-            {
-                "bar": "Hello, "
-            }
         }
     ]
 }
