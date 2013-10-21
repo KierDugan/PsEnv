@@ -7,7 +7,7 @@ environment by updating environment variables from a JSON file.  For example::
 
     Use-Tool -ToolName msvc10 -ToolSpec x86
 
-Could be used to make the 32 bit Microsoft VisualC++ compiler available in the
+Could be used to make the 32 bit Microsoft Visual C++ compiler available in the
 current PowerShell session.  An alias allows the above to reduce to simply
 ``use msvc10``.  All tools and specs are stored in a JSON file described later.
 
@@ -18,17 +18,17 @@ Motivation
 It's surprisingly easy for the ``PATH`` variable on a development computer to
 become completely out of hand.  Especially if you often work with many
 different platforms spanning web development and embedded electronics, as I do.
-I *solved* this problem a few years back (before discovering PowerShell) by
+I "solved" this problem a few years back (before discovering PowerShell) by
 writing a batch file called 'use' that would update the path for various tools
 I did not want on the path permanently.  Unfortunately, because CMD, this batch
 file had to be manually modified for every new tool installed.
 
 After discovering PowerShell, it immediately became obvious that it was a far
-better environment to work in than CMD but the handy (though awkward) 'use'
+better environment to work in than CMD, but the handy (though awkward) 'use'
 batch file would no longer work.  PsEnv is a far fancier solution to that same
 problem.  One must still manually modify a file to describe a new environment,
 but the description is no longer intermingled with the code.  Instead, all
-modifications are contained within a JSON file.
+of the information is contained within a JSON file.
 
 
 Commands
@@ -41,11 +41,11 @@ Use-Tool
 
     Use-Tool [-ToolName] <String> [[-ToolSpec] <String>] [[-DeferredArgs] <String[]>]
 
-`Use-Tool`_ will modify the environment variables of the currently active
+`Use-Tool`_ (alias ``use``) will modify the environment variables of the currently active
 PowerShell session to meet the requirements for some external tool or script.
 The ``PATH`` variable is treated separately because it is the most likely to be
 modified.  In fact, the ``PATH`` variable is the reason this function even
-exists.  On a system with many developer tools instead, it can be very easy for
+exists.  On a system with many developer tools installed, it can be very easy for
 ``PATH`` to become unwieldy.  With `Use-Tool`_, a short ``PATH`` containing only
 essential directories can be used most of the time, and then additional tools
 can be added as required.
@@ -140,7 +140,7 @@ Modifying the ``PATH``
 ----------------------
 
 The most common use-case for PsEnv is to add a set of directories to the
-``PATH``environment variable.  This is achieved by specifying an array of
+``PATH`` environment variable.  This is achieved by specifying an array of
 directories under the ``path`` key, as follows:
 
 .. code:: JSON
@@ -210,18 +210,26 @@ processed in this order so that ``delete`` has the highest precedence.
 In this example, the ``PATH`` variable is modified as before to allow
 PowerShell to find the executable.  A directory has been added to the *end* of
 the ``PYTHONPATH`` variable (note the explicit ``;`` because this is a simple
-text operation), and some SomeTool-specific variables have been ``set`` and
-``delete``d to get the desired environment.  ``prepend`` works in the same
-manner as ``append`` but the specified content has added to the front of the
+text operation), and some SomeTool-specific variables have been set and
+deleted to get the desired environment.  ``prepend`` works in the same
+manner as ``append`` but the specified content is added to the front of the
 variable instead of the back.  It is also a simple text operation, hence the
 above would have to change to the following to get the semicolon in the correct
 place.
 
 .. code:: JSON
 
-    "prepend":
+
     {
-        "PYTHONPATH": "C:\\SomeTool\\PyBin;"
+        "SomeTool":
+        [
+            {
+                "prepend":
+                {
+                    "PYTHONPATH": "C:\\SomeTool\\PyBin;"
+                }
+            }
+        ]
     }
 
 Using legacy batch files
@@ -252,7 +260,7 @@ session:
 Invoking ``Use-Tool msvc10`` would execute the standard ``vcvarsall.bat`` file
 and merge the two environments together.  However, ``vcvarsall`` can accept a
 command line parameter to select the toolchain required.  There are several
-approaches to this issue, but first we'll discuss ``-DeferredArgs``.  It
+approaches to dealing with this issue, but first we'll discuss ``-DeferredArgs``.  It
 accepts a comma-delimited set of arguments to pass directly onto the batch file:
 
 .. code:: PowerShell
@@ -266,7 +274,7 @@ element of a ``defer`` array together with a space and optionally escaping
 arguments that contain a space.  ``-DeferredArgs`` are then joined onto the
 back of this string to form the full command that is issued.  For Example:
 
-.. code::JSON
+.. code:: JSON
 
     {
         "msvc10":
