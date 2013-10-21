@@ -97,7 +97,7 @@ Use-Tool will modify the environment variables of the currently active
 PowerShell session to meet the requirements for some external tool or script.
 The PATH variable is treated separately because it is the most likely to be
 modified.  In fact, the PATH variable is the reason this function even exists.
-On a system with many developer tools instead, it can be very easy for PATH to
+On a system with many developer tools installed, it can be very easy for PATH to
 become unwieldy.  With Use-Tool, a short PATH containing only essential
 directories can be used most of the time, and then additional tools can be added
 as required.
