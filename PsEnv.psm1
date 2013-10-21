@@ -156,7 +156,7 @@ function Use-Tool {
     process {
         # Get the current environment description
         if (-not ($spec = GetEnvironmentSpec $ToolName $ToolSpec)) {
-            write-error lol
+            Write-Error "Failed to load tool spec ${ToolName}:${ToolSpec}."
             return
         }
 
