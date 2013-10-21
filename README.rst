@@ -78,7 +78,21 @@ compiler for either x86 or x86_64 targets.
 Set-PsEnvConfig
 ---------------
 
-TODO.
+.. code:: PowerShell
+
+    Set-PsEnvConfig [-ConfigFile] <String>
+
+This function must be called before any calls to `Use-Tool`_.  Ideally a call
+should be placed in your ``$Profile`` to ensure this information is readily
+available.  Any modifications to your environment description JSON file must be
+loaded by `Set-PsEnvConfig`_ before any `Use-Tool`_ calls can make use of it.
+
++--------------------------+------------------------------------------------+
+| Parameter                | Description                                    |
++==========================+================================================+
+| ``-ConfigFile <String>`` | Path to a JSON environment description file to |
+|                          | load for `Use-Tool`_.                          |
++--------------------------+------------------------------------------------+
 
 
 Environment description files
