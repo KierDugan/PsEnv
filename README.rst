@@ -3,7 +3,7 @@ PsEnv
 *****
 
 A simple PowerShell module that allows specific tools to be added to the current
-environment by updating environment variables from a JSON file.  For example:
+environment by updating environment variables from a JSON file.  For example::
 
     Use-Tool -ToolName msvc10 -ToolSpec x86
 
@@ -39,17 +39,16 @@ Use-Tool
 
 .. code:: PowerShell
 
-    Use-Tool [-ToolName] <String> [[-ToolSpec] <String>]
-        [[-DeferredArgs] <String[]>]
+    Use-Tool [-ToolName] <String> [[-ToolSpec] <String>] [[-DeferredArgs] <String[]>]
 
-Use-Tool will modify the environment variables of the currently active
+`Use-Tool`_ will modify the environment variables of the currently active
 PowerShell session to meet the requirements for some external tool or script.
 The ``PATH`` variable is treated separately because it is the most likely to be
-modified.  In fact, the ``PATH`` variable is the reason this function even exists.
-On a system with many developer tools instead, it can be very easy for ``PATH`` to
-become unwieldy.  With Use-Tool, a short ``PATH`` containing only essential
-directories can be used most of the time, and then additional tools can be added
-as required.
+modified.  In fact, the ``PATH`` variable is the reason this function even
+exists.  On a system with many developer tools instead, it can be very easy for
+``PATH`` to become unwieldy.  With `Use-Tool`_, a short ``PATH`` containing only
+essential directories can be used most of the time, and then additional tools
+can be added as required.
 
 +------------------------------+-----------------------------------------------+
 | Parameter                    | Description                                   |
@@ -66,7 +65,7 @@ as required.
 +------------------------------+-----------------------------------------------+
 
 Tool environments are defined in a JSON file that is loaded with the
-_`Set-PsEnvConfig` command.  The contents of this file are parsed and stored in
+`Set-PsEnvConfig`_ command.  The contents of this file are parsed and stored in
 the ``PsEnvConfig`` global variable.  Neither function prohibits the
 modification of this variable by the user, but it is definitely not advised.
 The exact format of the JSON file is documented at
