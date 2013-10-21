@@ -318,6 +318,16 @@ load the 64 bit tool chain by default and the 32 bit version if ``Use-Tool
 msvc10 x86`` is issued.
 
 
+Testing
+=======
+
+A set of unit-tests have been provided in the ``Test`` directory.  To run them,
+`PSUnit <http://psunit.codeplex.com/>`_ must be installed and on the system
+``PATH``.  Open ``Test\PsEnv.Test.ps1`` in PowerShell ISE, ``cd`` into the
+``Test`` directory and then run the tests using the *Execute Unit Tests* option
+under the *PSUnit* sub-menu of the *Add-ons* menu.
+
+
 Credits
 =======
 
