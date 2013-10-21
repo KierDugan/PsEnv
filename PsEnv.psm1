@@ -47,25 +47,25 @@ function GetEnvironmentSpec($ToolName, $ToolSpec) {
 .SYNOPSIS
 
 Loads a JSON configuration file containing a list of environments that can be
-used with Use-Environment.
+used with Use-Tool.
 
 
 .DESCRIPTION
 
-This function must be called before any calls to Use-Environment.  Ideally a
-call should be placed in your $Profile to ensure this information is readily
+This function must be called before any calls to Use-Tool.  Ideally a call
+should be placed in your $Profile to ensure this information is readily
 available.  Any modifications to your environment description JSON file must be
-loaded by Set-PsEnvConfig before any Use-Environment calls can make use of it.
+loaded by Set-PsEnvConfig before any Use-Tool calls can make use of it.
 
 
 .PARAMETER ConfigFile
 
-Path to a JSON environment description file to load for Use-Environment.
+Path to a JSON environment description file to load for Use-Tool.
 
 
 .LINK
 https://github.com/DuFace/PsEnv
-Use-Environment
+Use-Tool
 #>
 function Set-PsEnvConfig {
     [CmdletBinding()]
@@ -93,12 +93,12 @@ file specifed by Set-PsEnvConfig.
 
 .DESCRIPTION
 
-Use-Environment will modify the environment variables of the currently active
+Use-Tool will modify the environment variables of the currently active
 PowerShell session to meet the requirements for some external tool or script.
 The PATH variable is treated separately because it is the most likely to be
 modified.  In fact, the PATH variable is the reason this function even exists.
 On a system with many developer tools instead, it can be very easy for PATH to
-become unwieldy.  With Use-Environment, a short PATH containing only essential
+become unwieldy.  With Use-Tool, a short PATH containing only essential
 directories can be used most of the time, and then additional tools can be added
 as required.
 
@@ -139,7 +139,7 @@ failure as no configuration information will exist.  Don't do that.
 https://github.com/DuFace/PsEnv
 Set-PsEnvConfig
 #>
-function Use-Environment {
+function Use-Tool {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
@@ -266,8 +266,8 @@ function Use-Environment {
 
 
 ## Exported commands and aliases -----------------------------------------------
-Set-Alias use Use-Environment
+Set-Alias use Use-Tool
 
 Export-ModuleMember Set-PsEnvConfig
-Export-ModuleMember Use-Environment
+Export-ModuleMember Use-Tool
 Export-ModuleMember -Alias use
