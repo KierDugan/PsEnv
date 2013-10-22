@@ -43,22 +43,12 @@
             ]
         }
     ],
-    "msvc10":
+    "batch-test":
     [
         {
-            "name": "x86",
             "defer":
             [
-                "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\vcvarsall.bat",
-                "x86"
-            ]
-        },
-        {
-            "name": "amd64",
-            "defer":
-            [
-                "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\vcvarsall.bat",
-                "amd64"
+                "legacy.bat"
             ]
         }
     ]
