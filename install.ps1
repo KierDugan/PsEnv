@@ -8,4 +8,8 @@ You can find your profile at:
 
     $profile
 
+For information on how to configure PsEnv, please visit:
+
+    https://github.com/DuFace/PsEnv
+
 "@
