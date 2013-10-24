@@ -95,6 +95,29 @@ loaded by `Set-PsEnvConfig`_ before any `Use-Tool`_ calls can make use of it.
 +--------------------------+------------------------------------------------+
 
 
+Installation
+============
+
+You can install by executing the following `PsGet`__ command if you have it installed:
+
+.. code:: PowerShell
+
+    Install-Module PsEnv
+
+Alternatively, you can follow these manual steps:
+
+1.  Create a PsEnv directory under your modules directory (you can list your modules
+    path by executing ``$env:PSModulePath -split ';'``), and download PsEnv.psm1 into
+    it.
+2.  Execute ``Import-Module PsEnv`` (you can add this command to your ``$profile``).
+3.  Create a JSON environment description file and add ``Set-PsEnvConfig <your-file>.json``
+    to your ``$profile``.
+4.  Execute ``Use-Tool <tool-name>`` whenever you need to bring tools defined in your
+    JSON file into the current session!
+
+.. __: https://github.com/psget/psget
+
+
 Environment description files
 =============================
 
