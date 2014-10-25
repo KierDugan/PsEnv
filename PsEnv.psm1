@@ -184,7 +184,7 @@ function Use-Tool {
         # Create any new variables
         if ($toolSet) {
             foreach ($key in GetJsonKeys $toolSet) {
-                $value = $toolSet.$key
+                $value = [Environment]::ExpandEnvironmentVariables($toolSet.$key)
 
                 # Actually create the variable
                 if ($value) {
