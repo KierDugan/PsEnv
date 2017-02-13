@@ -9,7 +9,7 @@ function script:GetEnvironmentToolNames() {
 function script:GetEnvironmentSpecNames() {
     Param($toolName)
     $results = $Global:PsEnvConfig.$toolName | ForEach-Object{$_.name}
-    if($null -eq $resuls){
+    if($null -eq $results){
         return @()
     }
     else {
