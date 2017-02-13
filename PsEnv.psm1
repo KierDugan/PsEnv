@@ -264,10 +264,14 @@ function Use-Tool {
     }
 }
 
+## source external scripts -----------------------------------------------------
+
+. (join-path $PSScriptRoot ".\PsEnvTabExpansion.ps1")
 
 ## Exported commands and aliases -----------------------------------------------
 Set-Alias use Use-Tool
 
 Export-ModuleMember Set-PsEnvConfig
 Export-ModuleMember Use-Tool
+Export-ModuleMember TabExpansion
 Export-ModuleMember -Alias use
