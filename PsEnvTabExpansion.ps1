@@ -1,3 +1,6 @@
+# Ideas from the Awesome Posh-Git - https://github.com/dahlbyk/posh-git
+# Posh-Git License - https://github.com/dahlbyk/posh-git/blob/1941da2472eb668cde2d6a5fc921d5043a024386/LICENSE.txt
+# http://www.jeremyskinner.co.uk/2010/03/07/using-git-with-windows-powershell/
 
 function script:GetEnvironmentToolNames() {
     return [array](Get-Member -InputObject $Global:PsEnvConfig -MemberType NoteProperty | ForEach-Object -MemberName 'Name')
@@ -5,7 +8,6 @@ function script:GetEnvironmentToolNames() {
 
 function script:GetEnvironmentSpecNames() {
     Param($toolName)
-    #    Write-Host "GetEnvironmentSpecNames ", $toolName
     return $Global:PsEnvConfig.$toolName | ForEach-Object{$_.name}
 }
 
