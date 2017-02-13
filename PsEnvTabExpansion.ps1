@@ -3,16 +3,22 @@
 # http://www.jeremyskinner.co.uk/2010/03/07/using-git-with-windows-powershell/
 
 function script:GetEnvironmentToolNames() {
-    return [array](Get-Member -InputObject $Global:PsEnvConfig -MemberType NoteProperty | ForEach-Object -MemberName 'Name')
+    return Get-Member -InputObject $Global:PsEnvConfig -MemberType NoteProperty | ForEach-Object -MemberName 'Name'
 }
 
 function script:GetEnvironmentSpecNames() {
     Param($toolName)
-    return $Global:PsEnvConfig.$toolName | ForEach-Object{$_.name}
+    $results = $Global:PsEnvConfig.$toolName | ForEach-Object{$_.name}
+    if($null -eq $resuls){
+        return @()
+    }
+    else {
+        return $results
+    }
 }
 
 function script:GetAliasPattern($command) {
-    $aliases = @($command) + @(Get-Alias | Where-Object { $_.Definition -eq $command } | select -Exp Name)
+    $aliases = @($command) + @(Get-Alias | Where-Object { $_.Definition -eq $command } | Select-Object -Exp Name)
     "($($aliases -join '|'))"
 }
 
